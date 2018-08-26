@@ -3,7 +3,7 @@
  * Plugin Name: Classes shipping cost
  * Plugin URI: http://sadeconline.com/
  * Description: Classes shipping cost Method for WooCommerce
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Wayne Nguyen
  * Author URI: http://sadeconline.com/
  * License: GPL-3.0+
