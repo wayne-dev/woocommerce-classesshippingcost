@@ -2,6 +2,7 @@
 defined( 'ABSPATH' ) || exit;
 if ( ! class_exists( 'sadeconline_Shipping_Method' ) ) {
 	class sadeconline_Shipping_Method extends WC_Shipping_Method {
+
 		public function __construct() {
 			$this->id                 = 'classes_shipping'; 
 			$this->method_title       = __( 'Classes shipping', 'sadeconline' );  
@@ -68,7 +69,7 @@ if ( ! class_exists( 'sadeconline_Shipping_Method' ) ) {
 
 		}
 
-		public function calculate_shipping( $package ) {
+		public function calculate_shipping( $package = array() ) {
 			$group_shipping = $this->settings['group_shipping'];
 			if(isset($group_shipping) && $group_shipping == 'yes')
 				$session_incart = $this->get_session_incart_group($package);
@@ -76,6 +77,7 @@ if ( ! class_exists( 'sadeconline_Shipping_Method' ) ) {
 				$session_incart = $this->get_session_incart_single($package);
 			$_SESSION['sadeconline_info_cart'] = $session_incart;
 		}
+
 		public function get_session_incart_single( $package ) {
 			$cost = 0;
 			$min_amount = $this->settings['min_amount'];
@@ -121,6 +123,7 @@ if ( ! class_exists( 'sadeconline_Shipping_Method' ) ) {
 			}
 			return $session_incart;			
 		}
+
 		public function get_session_incart_group( $package ) {
 			$cost = 0;
 			$min_amount = $this->settings['min_amount'];
@@ -193,6 +196,7 @@ if ( ! class_exists( 'sadeconline_Shipping_Method' ) ) {
 			}
 			return $session_incart;
 		}
+
 		public function get_subtotal( $products ) {
 			$sub_total = 0;
 			foreach($products as $pro){
@@ -200,6 +204,7 @@ if ( ! class_exists( 'sadeconline_Shipping_Method' ) ) {
 			}
 			return $sub_total;
 		}
+		
 		public function cart_price_label( $label, $method ) {
 			if ( !(int)$method->cost )  {
 				$label =str_replace(__( 'Free!', 'sadeconline' ), '0.00', $label);
